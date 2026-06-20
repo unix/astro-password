@@ -1,0 +1,94 @@
+---
+import PasswordLoginForm from './components/password-login-form.astro'
+import GeistLatinCriticalFont from './fonts/geist-latin.astro'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta
+      content="This page is password protected. Enter the password to continue."
+      name="description"
+    />
+    <meta content="noindex, nofollow, noarchive" name="robots" />
+    <title>Protected</title>
+    <GeistLatinCriticalFont />
+    <style>
+      :root {
+        color: #111827;
+        background: #f8fafc;
+        font-family:
+          'Geist Critical', 'Geist Variable', 'Geist', 'PingFang SC',
+          'Noto Sans SC Variable', 'Noto Sans SC', 'Microsoft YaHei UI',
+          'Microsoft YaHei', sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.92),
+            rgba(248, 250, 252, 0.94)
+          ),
+          #f8fafc;
+      }
+
+      main {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .panel {
+        width: min(100%, 360px);
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        background: #ffffff;
+        padding: 24px;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+      }
+
+      .header {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 0;
+      }
+
+      p {
+        margin: 8px 0 0;
+        color: #6b7280;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section
+        class="panel"
+        aria-describedby="password-description"
+        aria-labelledby="password-title">
+        <div class="header">
+          <h1 id="password-title">Protected Page</h1>
+          <p id="password-description">Enter the password to continue.</p>
+        </div>
+        <PasswordLoginForm />
+      </section>
+    </main>
+  </body>
+</html>

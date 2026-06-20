@@ -1,0 +1,16 @@
+export const DEFAULT_AUTH_PATH = '/protected'
+export const DEFAULT_COOKIE_NAME = 'ASTRO_PASSWORD'
+export const DEFAULT_LOGOUT_PATH = '/logout'
+export const DEFAULT_REDIRECT_PARAM = 'redirect'
+export const DEFAULT_SALT = 'ASTRO_PASSWORD'
+export const CACHE_CONTROL_NO_STORE = 'no-store, private'
+export const ASTRO_ASSET_PATH = '/_astro/[...path]'
+export const HTTPS_PROTOCOL = 'https:'
+export const JSON_CONTENT_TYPE = 'application/json'
+export const METHOD_POST = 'POST'
+export const PASSWORD_FIELD_NAME = 'password'
+export const ROOT_PATH = '/'
+export const STATUS_FOUND = 302
+export const STATUS_OK = 200
+export const STATUS_UNAUTHORIZED = 401
+export const DEFAULT_MAX_AGE = 60 * 60

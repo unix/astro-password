@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "astro-password",
+  "compatibility_date": "2026-06-20",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "astro-password.witt.im",
+      "custom_domain": true,
+    },
+  ],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist/client",
+  },
+  "observability": {
+    "enabled": true,
+  },
+}

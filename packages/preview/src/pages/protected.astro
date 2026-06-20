@@ -1,0 +1,213 @@
+---
+import { PasswordLoginForm } from 'astro-password/components'
+
+import MainLayout from '../layouts/main-layout.astro'
+---
+
+<MainLayout title="Protected | Astro Password Preview">
+  <main
+    class="grid min-h-dvh place-items-center bg-background px-4 py-10 text-foreground sm:px-6">
+    <section
+      aria-describedby="password-description"
+      aria-labelledby="password-title"
+      class="mx-auto grid w-full max-w-[380px] gap-3">
+      <div class="rounded-[10px] border border-border bg-card p-4 shadow-xs">
+        <div class="mb-5 flex items-start gap-3">
+          <div
+            class="flex size-9 shrink-0 items-center justify-center rounded-[8px] border border-border bg-background">
+            <img
+              alt=""
+              class="size-5 select-none"
+              draggable="false"
+              height="20"
+              src="/logo.svg"
+              width="20"
+            />
+          </div>
+          <div class="min-w-0">
+            <p class="text-xs font-medium text-muted-foreground">
+              astro-password preview
+            </p>
+            <h1
+              class="mt-1 text-base leading-6 font-medium tracking-normal text-balance"
+              id="password-title">
+              Unlock the private route.
+            </h1>
+          </div>
+        </div>
+
+        <p
+          class="mb-4 text-sm leading-6 text-muted-foreground"
+          id="password-description">
+          This is the preview login page. Enter
+          <code
+            class="inline-flex h-5 items-center rounded-full border border-border bg-muted px-1.5 font-mono text-xs font-medium text-foreground">
+            astro
+          </code>
+          to open the protected route.
+        </p>
+
+        <dl class="mb-5 grid gap-2 border-y border-border py-3 text-xs">
+          <div class="flex items-center justify-between gap-3">
+            <dt class="text-muted-foreground">Protected route</dt>
+            <dd class="font-medium">/private</dd>
+          </div>
+          <div class="flex items-center justify-between gap-3">
+            <dt class="text-muted-foreground">Auth page</dt>
+            <dd class="font-medium">/protected</dd>
+          </div>
+        </dl>
+
+        <PasswordLoginForm
+          checkingLabel="Checking access..."
+          errorMessage="That password did not unlock the preview."
+          idPrefix="preview-login"
+          passwordLabel="Shared password"
+          submitLabel="Unlock preview"
+        />
+      </div>
+
+      <a
+        class="mx-auto inline-flex items-center justify-center text-xs font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+        href="/">
+        Back to overview
+      </a>
+    </section>
+  </main>
+
+  <script>
+    const syncPreviewErrorSlot = () => {
+      const error = document.querySelector<HTMLParagraphElement>(
+        '#preview-login-error',
+      )
+      if (!error) return
+
+      const sync = () => {
+        const isEmpty = !error.textContent?.trim()
+        if (isEmpty) {
+          error.removeAttribute('hidden')
+          error.setAttribute('aria-hidden', 'true')
+          error.dataset.empty = 'true'
+          return
+        }
+
+        error.removeAttribute('aria-hidden')
+        delete error.dataset.empty
+      }
+
+      sync()
+      new MutationObserver(sync).observe(error, {
+        attributeFilter: ['hidden'],
+        attributes: true,
+        characterData: true,
+        childList: true,
+        subtree: true,
+      })
+    }
+
+    syncPreviewErrorSlot()
+  </script>
+
+  <style is:global>
+    #preview-login-form {
+      display: grid;
+      gap: 8px;
+    }
+
+    #preview-login-field {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 0;
+      color: var(--muted-foreground);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    #preview-login-input {
+      box-sizing: border-box;
+      width: 100%;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--background);
+      color: var(--foreground);
+      font: inherit;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      outline: none;
+      padding: 0 12px;
+      transition:
+        background 120ms ease,
+        border-color 120ms ease,
+        box-shadow 120ms ease;
+    }
+
+    #preview-login-input:focus {
+      border-color: var(--ring);
+      box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 34%, transparent);
+    }
+
+    #preview-login-input[aria-invalid='true'] {
+      border-color: var(--destructive);
+      box-shadow: 0 0 0 3px color-mix(in oklab, var(--destructive) 18%, transparent);
+    }
+
+    #preview-login-submit {
+      user-select: none;
+      box-sizing: border-box;
+      display: inline-flex;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 8px;
+      background: var(--primary);
+      color: var(--primary-foreground);
+      cursor: pointer;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      outline: none;
+      transition:
+        background 120ms ease,
+        box-shadow 120ms ease,
+        opacity 120ms ease;
+    }
+
+    #preview-login-submit:not(:disabled):hover {
+      background: color-mix(in oklab, var(--primary) 88%, transparent);
+    }
+
+    #preview-login-submit:focus-visible {
+      box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 34%, transparent);
+    }
+
+    #preview-login-submit:disabled,
+    #preview-login-submit[data-status='empty'] {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    #preview-login-submit[data-status='loading'] {
+      cursor: wait;
+      opacity: 0.7;
+    }
+
+    #preview-login-error {
+      min-height: 18px;
+      margin: 0;
+      color: var(--destructive);
+      font-size: 13px;
+      line-height: 18px;
+    }
+
+    #preview-login-error[hidden] {
+      display: block !important;
+      visibility: hidden;
+    }
+
+    #preview-login-error[data-empty='true'] {
+      visibility: hidden;
+    }
+  </style>
+</MainLayout>

@@ -1,0 +1,12 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "astro-password": ["../core/src/index.ts"]
+    },
+    "types": ["astro/client"]
+  },
+  "include": [".astro/types.d.ts", "src/**/*", "astro.config.mjs"]
+}

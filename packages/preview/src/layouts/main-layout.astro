@@ -1,0 +1,23 @@
+---
+import GeistLatinCriticalFont from '../components/geist-latin.astro'
+import GoogleAnalytics from '../components/google-analytics.astro'
+import '../styles/global.css'
+
+const { title = 'astro-password' } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <link href="/logo.svg" rel="icon" type="image/svg+xml" />
+    <link href="/logo.png" rel="alternate icon" type="image/png" />
+    <GoogleAnalytics measurementId="G-PG08G0V0W8" />
+    <GeistLatinCriticalFont />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

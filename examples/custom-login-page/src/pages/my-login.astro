@@ -1,0 +1,19 @@
+---
+import { PasswordLoginForm } from 'astro-password/components'
+import PageShell from '../layouts/page-shell.astro'
+
+const title = 'Unlock private page'
+---
+
+<PageShell eyebrow="Login route" noindex title={title}>
+  <p class="kicker">Custom login route</p>
+  <h1 id="page-title">Unlock the private page</h1>
+  <p>Enter the demo password to continue to <code>/private</code>.</p>
+  <div class="hint">Demo password: <code>astro</code></div>
+  <div class="form-area">
+    <PasswordLoginForm />
+  </div>
+  <p class="back-link">
+    <a href="/">Back to example home</a>
+  </p>
+</PageShell>

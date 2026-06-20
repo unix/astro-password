@@ -1,0 +1,35 @@
+---
+import MainLayout from '../layouts/main-layout.astro'
+---
+
+<MainLayout title="Private page">
+  <main class="min-h-screen bg-background p-6 text-foreground">
+    <section class="mx-auto grid max-w-5xl gap-6 py-12">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <p class="text-sm font-medium text-muted-foreground">Protected route</p>
+          <h1 class="text-4xl font-semibold tracking-normal">Welcome in.</h1>
+        </div>
+        <a
+          class="inline-flex h-10 items-center justify-center rounded-md border border-border px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+          href="/logout">
+          Logout
+        </a>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <article class="rounded-lg border border-border bg-card p-5">
+          <p class="text-sm text-muted-foreground">Scope</p>
+          <p class="mt-2 text-2xl font-semibold">/private</p>
+        </article>
+        <article class="rounded-lg border border-border bg-card p-5">
+          <p class="text-sm text-muted-foreground">Cookie</p>
+          <p class="mt-2 text-2xl font-semibold">httpOnly</p>
+        </article>
+        <article class="rounded-lg border border-border bg-card p-5">
+          <p class="text-sm text-muted-foreground">Hash</p>
+          <p class="mt-2 text-2xl font-semibold">SHA-256</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</MainLayout>

@@ -1,0 +1,321 @@
+---
+interface Props {
+  eyebrow?: string
+  noindex?: boolean
+  title: string
+}
+
+const { eyebrow = 'Example', noindex = false, title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    {noindex && <meta content="noindex, nofollow" name="robots" />}
+    <title>{title}</title>
+  </head>
+  <body>
+    <main class="shell">
+      <section aria-labelledby="page-title" class="panel">
+        <div class="brand-row">
+          <a class="brand" href="/">
+            <span aria-hidden="true" class="brand-mark">AP</span>
+            <span>astro-password</span>
+          </a>
+          <span class="eyebrow">{eyebrow}</span>
+        </div>
+        <div class="panel-rule"></div>
+        <slot />
+      </section>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-height: 100%;
+    background: #fafafa;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background:
+      linear-gradient(180deg, #f4f4f5 0, rgba(244, 244, 245, 0) 260px),
+      radial-gradient(circle at 50% 0, rgba(212, 212, 216, 0.28), transparent 360px),
+      #fafafa;
+    color: #18181b;
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    position: fixed;
+    inset: 0 0 auto;
+    height: 1px;
+    background: #e4e4e7;
+    content: '';
+  }
+
+  a {
+    color: inherit;
+  }
+
+  a:focus-visible {
+    outline: 3px solid rgba(113, 113, 122, 0.35);
+    outline-offset: 3px;
+  }
+
+  code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  }
+
+  .shell {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 48px 16px;
+  }
+
+  .panel {
+    width: min(100%, 640px);
+    border: 1px solid #e4e4e7;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+    padding: 24px;
+  }
+
+  .brand-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #18181b;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .brand-mark {
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #18181b;
+    color: #fafafa;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    min-height: 26px;
+    align-items: center;
+    border: 1px solid #e4e4e7;
+    border-radius: 999px;
+    background: #fafafa;
+    color: #71717a;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0 10px;
+  }
+
+  .panel-rule {
+    height: 1px;
+    background: #e4e4e7;
+    margin: 0 -24px 24px;
+  }
+
+  .kicker {
+    margin: 0 0 6px;
+    color: #71717a;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .panel h1 {
+    margin: 0;
+    color: #18181b;
+    font-size: 28px;
+    font-weight: 650;
+    letter-spacing: 0;
+    line-height: 1.18;
+  }
+
+  .panel p {
+    margin: 10px 0 0;
+    color: #52525b;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .panel code {
+    border: 1px solid #e4e4e7;
+    border-radius: 6px;
+    background: #f4f4f5;
+    color: #18181b;
+    font-size: 0.92em;
+    padding: 2px 6px;
+  }
+
+  .route-list {
+    display: grid;
+    margin-top: 22px;
+    border-block: 1px solid #e4e4e7;
+  }
+
+  .route-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .route-item + .route-item {
+    border-top: 1px solid #e4e4e7;
+  }
+
+  .route-label {
+    color: #71717a;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .notice {
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    background: #f0fdf4;
+    color: #166534;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-top: 22px;
+    padding: 12px 14px;
+  }
+
+  .hint {
+    border: 1px solid #fef3c7;
+    border-radius: 8px;
+    background: #fffbeb;
+    color: #92400e;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 22px;
+    padding: 12px 14px;
+  }
+
+  .form-area {
+    border-top: 1px solid #e5e7eb;
+    margin-top: 22px;
+    padding-top: 22px;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .button {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #18181b;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 14px;
+    text-decoration: none;
+    transition:
+      background 120ms ease,
+      border-color 120ms ease;
+  }
+
+  .button:hover {
+    background: #27272a;
+  }
+
+  .button-secondary {
+    border: 1px solid #e4e4e7;
+    background: #ffffff;
+    color: #18181b;
+  }
+
+  .button-secondary:hover {
+    background: #f4f4f5;
+  }
+
+  .plain-link,
+  .back-link a {
+    color: #18181b;
+    font-weight: 600;
+  }
+
+  .back-link {
+    margin-top: 18px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 520px) {
+    .shell {
+      padding: 24px 12px;
+    }
+
+    .panel {
+      padding: 20px;
+    }
+
+    .brand-row {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .panel-rule {
+      margin-inline: -20px;
+    }
+
+    .panel h1 {
+      font-size: 24px;
+    }
+
+    .route-item {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+import PageShell from '../layouts/page-shell.astro'
+
+const title = 'Custom login page'
+---
+
+<PageShell eyebrow="Public page" title={title}>
+  <p class="kicker">Custom auth route</p>
+  <h1 id="page-title">{title}</h1>
+  <p>
+    This example uses a project-owned login route before showing private content.
+  </p>
+  <div class="route-list" aria-label="Example routes">
+    <div class="route-item">
+      <span class="route-label">Login route</span>
+      <code>/my-login</code>
+    </div>
+    <div class="route-item">
+      <span class="route-label">Protected route</span>
+      <code>/private</code>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="button" href="/private">Open private page</a>
+  </div>
+</PageShell>

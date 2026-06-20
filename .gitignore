@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.output/
+
+# Astro
+.astro/
+
+# Cloudflare
+.wrangler/
+.dev.vars
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage and test artifacts
+coverage/
+playwright-report/
+test-results/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Package manager caches
+.pnpm-store/
+.yarn/
+.npm/
+
+# Editor and system files
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

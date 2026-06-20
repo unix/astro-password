@@ -1,0 +1,26 @@
+---
+import PageShell from '../layouts/page-shell.astro'
+
+const title = 'Custom protected page'
+---
+
+<PageShell eyebrow="Unlocked" title={title}>
+  <p class="kicker">Private route</p>
+  <h1 id="page-title">{title}</h1>
+  <p>You passed through the custom login page.</p>
+  <div class="notice">Signed in for this browser session.</div>
+  <div class="route-list" aria-label="Protected page details">
+    <div class="route-item">
+      <span class="route-label">Current route</span>
+      <code>/private</code>
+    </div>
+    <div class="route-item">
+      <span class="route-label">Logout route</span>
+      <code>/logout</code>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="button button-secondary" href="/logout">Log out</a>
+    <a class="plain-link" href="/">Example home</a>
+  </div>
+</PageShell>
