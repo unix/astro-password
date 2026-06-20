@@ -13,6 +13,16 @@ Use it only over HTTPS. Avoid logging request bodies, cookies, and auth-related
 headers in application logs, reverse proxies, analytics, or error reporting
 tools.
 
+## Installation
+
+Install astro-password in an Astro project:
+
+```bash
+npm install astro-password
+```
+
+Requires Astro 5.0 or later.
+
 ## Usage
 
 Add the integration, set a password, and list the Astro route patterns to

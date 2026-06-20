@@ -1,5 +1,5 @@
 import tailwindcss from '@tailwindcss/vite'
-import astroPassword from '../core/src/integration.ts'
+import astroPassword from 'astro-password'
 import { defineConfig } from 'astro/config'
 import cloudflare from '@astrojs/cloudflare'
 

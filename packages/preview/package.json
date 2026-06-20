@@ -4,10 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "astro build",
-    "deploy": "astro build && wrangler deploy",
-    "deploy:dry-run": "astro build && wrangler deploy --dry-run",
-    "dev": "astro dev --port 4320",
+    "build": "pnpm --filter astro-password build && astro build",
+    "release": "pnpm run build && wrangler deploy",
+    "dev": "pnpm --filter astro-password build && astro dev --port 4320",
     "lint": "eslint src",
     "prettier": "prettier --write .",
     "typecheck": "astro check"
@@ -23,6 +22,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "vite": "^8.0.16",
     "wrangler": "^4.103.0"
   }
 }

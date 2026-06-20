@@ -9,6 +9,16 @@ password submissions, and stores successful access in an HTTP-only cookie.
 This package is intended for simple shared-password protection. It is not a full
 authentication or authorization system.
 
+## Installation
+
+Install astro-password in an Astro project:
+
+```bash
+npm install astro-password
+```
+
+Requires Astro 5.0 or later.
+
 ## Usage
 
 ```ts
